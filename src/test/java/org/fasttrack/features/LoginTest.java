@@ -27,23 +27,52 @@ public class LoginTest {
     private LoginSteps loginSteps;
 
 
-    private String userEmail = "cosmin@fasttrackit.org";
-    private String userPass = "123456";
-    private String userName = "asdasda asdasd";
+
+    private String userEmail = "spatariuandrei@yahoo.com";
+    private String userPass = "IonuT123AndreiS";
+    private String userName = "spatariuandrei";
+
+
 
     @Test
     public void validLoginTest() {
         loginSteps.navigateToLoginPage();
         loginSteps.performLogin(userEmail, userPass);
         loginSteps.checkLoggedIn(userName);
+
     }
 
     @Test
-    public void invalidLoginTest() {
+    public void invalidLoginWithWrongEmailTest() {
         loginSteps.navigateToLoginPage();
-        loginSteps.performLogin(userEmail, "aaaaaaaaa");
-        loginSteps.checkNotLoggedIn();
+        loginSteps.performLogin("dddd@yahoo.com", "aaaaaaaaa");
+        loginSteps.checkEmailIsWrong();
+    }
+    @Test
+    public void invalidLoginWithWrongPasswordTest() {
+        loginSteps.navigateToLoginPage();
+        loginSteps.performLogin(userEmail,"aaaaaa");
+        loginSteps.checkPasswordIsWrong();
+
+}
+    @Test
+        public void validLoginTestWithUserName() {
+        loginSteps.navigateToLoginPage();
+        loginSteps.performLogin(userName, userPass);
+        loginSteps.checkLoggedIn(userName);
+
+}
+    @Test
+    public void invalidLoginWithWrongUserNameTest() {
+        loginSteps.navigateToLoginPage();
+        loginSteps.performLogin("dddd", "aaaaaaaaa");
+        loginSteps.checkUserNameIsWrong();
     }
 
-
+    @Test
+    public void invalidLoginWithCorectUserNameAndWrongPasswordTest() {
+        loginSteps.navigateToLoginPage();
+        loginSteps.performLogin(userName, "aaaaaaaaa");
+        loginSteps.checkLoginWithCorectUserNameAndWrongPassword(userName);
+    }
 }

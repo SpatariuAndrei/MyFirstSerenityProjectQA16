@@ -5,36 +5,46 @@ import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.DefaultUrl;
 
-@DefaultUrl("https://fasttrackit.org/selenium-test/customer/account/login/")
+@DefaultUrl("http://qa3.fasttrackit.org:8008/my-account")
 public class LoginPage extends PageObject {
 
-    @FindBy(id = "email")
-    private WebElementFacade emailField;
+    @FindBy(css = "#username")
+    private WebElementFacade typeEmailField;
 
-    @FindBy(id = "pass")
-    private WebElementFacade passField;
+    @FindBy(css = "#password")
+    private WebElementFacade passwordField;
 
-    @FindBy(id = "send2")
+    @FindBy(css = "[value=Login]")
     private WebElementFacade loginButton;
 
-    @FindBy(css = ".error-msg span")
+    @FindBy(css = ".woocommerce-error")
     private WebElementFacade errorMessageSpan;
 
     public void setEmailField(String email) {
-        typeInto(emailField, email);
+        typeInto(typeEmailField, email);
     }
 
-    public void setPassField(String pass) {
-        typeInto(passField, pass);
+    public void setPassField(String pass) { typeInto(passwordField, pass);
+
     }
 
     public void clickLoginButton(){
         clickOn(loginButton);
     }
 
-    public void verifyNotLoggedIn(){
-        errorMessageSpan.shouldContainText("Invalid login or password.");
+    public void verifyWrongEmail(){
+        errorMessageSpan.shouldContainText("Invalid email address.");
     }
+    public void verifyWrongPassword() {
+        errorMessageSpan.shouldContainText("The password you entered for the email address spatariuandrei@yahoo.com is incorrect.");
 
+    }
+    public void verifyWrongUserName(){
+        errorMessageSpan.shouldContainText("Invalid username.");
 
+}
+    public void verifyLoginWithUserNameAndWrongPassword(String username) {
+        errorMessageSpan.shouldContainText("The password you entered for the username " + username +  " is incorrect. ");
+
+    }
 }
