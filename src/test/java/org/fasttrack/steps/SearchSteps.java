@@ -44,7 +44,7 @@ public class SearchSteps extends ScenarioSteps {
 }
     @Step
     public void checkNoResultsAreDisplayed (){
-    searchPage.checkNoResultsAreDisplayed();
+    Assert.assertTrue("Nothing matched -  search message not shown", searchPage.checkNoResultsAreDisplayed());
 
 }
 }

@@ -38,12 +38,14 @@ public void verifySearch (){
 
 
 }
+
+// this test will fail - search Bag
 @Test
 public void verifyInvalidSearch (){
     searchSteps.navigateToHomePage();
     searchSteps.typeTextIntoSearchBar(searchValue);
     searchSteps.performSearch();
-    searchSteps.checkIfTextIsFoundInSearchList("fqsdfsd");
+    searchSteps.checkIfTextIsFoundInSearchList("Bags");
 }
 @Test
     public void verifyNoResultsDisplayed() {

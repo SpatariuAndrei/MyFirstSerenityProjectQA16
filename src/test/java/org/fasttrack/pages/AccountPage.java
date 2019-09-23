@@ -6,8 +6,9 @@ import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.DefaultUrl;
 
-@DefaultUrl("https://fasttrackit.org/selenium-test/customer/account/")
+@DefaultUrl("http://qa3.fasttrackit.org:8008/my-account")
 public class AccountPage extends PageObject {
+
 
     @FindBy(css = ".woocommerce-MyAccount-content")
     private WebElementFacade helloText;
@@ -15,5 +16,7 @@ public class AccountPage extends PageObject {
     public boolean isLoggedIn(String userName){
         return helloText.containsText(userName);
     }
+
+
 
 }

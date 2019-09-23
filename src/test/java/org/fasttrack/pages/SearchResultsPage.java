@@ -66,8 +66,8 @@ private WebElementFacade searchButton;
         return true;
 }
 
-public void checkNoResultsAreDisplayed(){
-        noResultsMessage.shouldContainText("Sorry, but nothing matched your search terms");
+public boolean checkNoResultsAreDisplayed(){
+        return noResultsMessage.containsText("Sorry, but nothing matched your search terms.");
 
 
 

@@ -27,10 +27,10 @@ public class LoginTest {
     private LoginSteps loginSteps;
 
 
-
-    private String userEmail = "spatariuandrei@yahoo.com";
-    private String userPass = "IonuT123AndreiS";
     private String userName = "spatariuandrei";
+    private String userEmail = userName+"@yahoo.com";
+    private String userPass = "IonuT123AndreiS";
+
 
 
 
@@ -45,14 +45,14 @@ public class LoginTest {
     @Test
     public void invalidLoginWithWrongEmailTest() {
         loginSteps.navigateToLoginPage();
-        loginSteps.performLogin("dddd@yahoo.com", "aaaaaaaaa");
+        loginSteps.performLogin("dddd@yahoo.com", userPass);
         loginSteps.checkEmailIsWrong();
     }
     @Test
     public void invalidLoginWithWrongPasswordTest() {
         loginSteps.navigateToLoginPage();
         loginSteps.performLogin(userEmail,"aaaaaa");
-        loginSteps.checkPasswordIsWrong();
+        loginSteps.checkPasswordIsWrong(userEmail);
 
 }
     @Test

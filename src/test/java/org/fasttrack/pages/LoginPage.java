@@ -32,19 +32,19 @@ public class LoginPage extends PageObject {
         clickOn(loginButton);
     }
 
-    public void verifyWrongEmail(){
-        errorMessageSpan.shouldContainText("Invalid email address.");
+    public boolean verifyWrongEmail(){
+      return errorMessageSpan.containsText("Invalid email address.");
     }
-    public void verifyWrongPassword() {
-        errorMessageSpan.shouldContainText("The password you entered for the email address spatariuandrei@yahoo.com is incorrect.");
+    public boolean verifyWrongPassword(String email) {
+       return errorMessageSpan.containsText("The password you entered for the email address " + email +   " is incorrect.");
 
     }
-    public void verifyWrongUserName(){
-        errorMessageSpan.shouldContainText("Invalid username.");
+    public boolean verifyWrongUserName(){
+      return   errorMessageSpan.containsText("Invalid username.");
 
 }
-    public void verifyLoginWithUserNameAndWrongPassword(String username) {
-        errorMessageSpan.shouldContainText("The password you entered for the username " + username +  " is incorrect. ");
+    public boolean verifyLoginWithUserNameAndWrongPassword(String username) {
+       return errorMessageSpan.containsText("The password you entered for the username " + username +  " is incorrect. ");
 
     }
 }

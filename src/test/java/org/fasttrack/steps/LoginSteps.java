@@ -34,23 +34,25 @@ public class LoginSteps extends ScenarioSteps   {
 
     @Step
     public void checkEmailIsWrong(){
-        loginPage.verifyWrongEmail();
+        Assert.assertTrue("Invalid email message not shown",loginPage.verifyWrongEmail());
+
+
     }
 
     @Step
-    public void checkPasswordIsWrong () {
-        loginPage.verifyWrongPassword();
+    public void checkPasswordIsWrong (String email) {
+        Assert.assertTrue("Password is wrong message not shown",loginPage.verifyWrongPassword(email));
 }
 
 
     @Step
     public void checkUserNameIsWrong() {
-        loginPage.verifyWrongUserName();
+        Assert.assertTrue("Invalid username message not shown", loginPage.verifyWrongUserName());
 
 }
     @Step
     public void checkLoginWithCorectUserNameAndWrongPassword (String username) {
-        loginPage.verifyLoginWithUserNameAndWrongPassword(username);
+        Assert.assertTrue("Wrong password for username message not shown", loginPage.verifyLoginWithUserNameAndWrongPassword(username));
 
 
     }
